@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface Web_VC : UIViewController
-
+@protocol ViewControllDelegate<NSObject>
+-(void)transit:(NSString*) con;
+@end
+typedef void(^transit)(NSString* txt);
+@interface Web_VC : UIViewController<ViewControllDelegate>
+@property(nonatomic,strong)UITextView* tv;
+@property(nonatomic,strong)UITextView* tv_2;
+@property(nonatomic,strong)transit blc;
+@property(nonatomic,readwrite)NSString* content;
+@property(nonatomic,readwrite)NSString* tv_2_text;
+@property(nonatomic,readwrite)id<ViewControllDelegate> delegate;
 @end

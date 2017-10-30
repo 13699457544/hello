@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-
 @interface AppDelegate ()
 
 @end
@@ -16,7 +15,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    [self.window makeKeyWindow];
+    tab_01* _tab_01=[[tab_01 alloc] init];
+    _tab_01.title=@"视图01";
+    tab_02* _tab_02=[[tab_02 alloc] init];
+    _tab_02.title=@"视图02";
+    tab_03* _tab_03=[[tab_03 alloc] init];
+    _tab_03.title=@"视图03";
+    
+    _tab_01.view.backgroundColor=[UIColor redColor];
+    _tab_02.view.backgroundColor=[UIColor greenColor];
+    _tab_03.view.backgroundColor=[UIColor orangeColor];
+    UITabBarController* tab_ctr=[[UITabBarController alloc] init];
+    NSArray* ctr_arry=[NSArray arrayWithObjects:_tab_01,_tab_02,_tab_03,nil];
+    tab_ctr.viewControllers=ctr_arry;
+    
+    self.window.rootViewController=tab_ctr;
+    
     return YES;
 }
 
